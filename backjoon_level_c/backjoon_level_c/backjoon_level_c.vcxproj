@@ -69,7 +69,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <EmbedManifest>false</EmbedManifest>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -118,81 +120,120 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="1000.c">
+    <ClInclude Include="1000.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="1001.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="1001.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="1008.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="1008.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="10172.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="10172.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="10430.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="10430.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="10718.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="10718.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="10869.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="10817.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="10998.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="10869.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="11718.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="10998.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="11719.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="11718.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="11720.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="11719.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="11721.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="11720.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="15552.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="11721.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="1924.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="15552.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="2438.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="1924.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="2439.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="2438.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="2440.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="2439.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="2441.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="2440.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="2558.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="2441.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="2739.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="2558.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="2741.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="2739.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="2742.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="2741.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="2839.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="2742.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="7287.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="2839.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="8393.c">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="7287.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="8393.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="9438.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <FileType>CppCode</FileType>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="10871.c">
+      <FileType>CppCode</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
