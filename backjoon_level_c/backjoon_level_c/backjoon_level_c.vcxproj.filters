@@ -100,4 +100,18 @@
       <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="test.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="test2.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="4344.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1110.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
