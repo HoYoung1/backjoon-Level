@@ -1,3 +1,5 @@
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -5,7 +7,6 @@ int main() {
 
 	int size, num;
 	scanf("%d %d", &size, &num);
-	printf("num : %d\n", num);
 	int *arr;
 
 	arr = (int*)malloc(sizeof(int)*size);
