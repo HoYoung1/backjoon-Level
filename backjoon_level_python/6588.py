@@ -17,29 +17,25 @@ def sieve_of_eratosthenes(maximum):
 
 # 메모리 39016KB 시간 4584ms
 def solution1(tc, primes, primes_bool):
-    correct_flag = False
     for prime in primes:
         if primes_bool[tc - prime] is True:
             # 두 소수의 합으로 표현되면
-            correct_flag = True
             print('{} = {} + {}'.format(tc, prime, tc - prime))
-            break
-    if correct_flag is False:
-        print("Goldbach's conjecture is wrong.")
+            return
+
+    print("Goldbach's conjecture is wrong.")
 
 
 # 메모리 37096KB 시간 4620ms
+# 에라토스테네스의 체를 구할 때 primes_bool 만으로도 답을 구할 수 있음.
 def solution2(tc, primes_bool):
-    correct_flag = False
     for idx, prime_bool in enumerate(primes_bool):
         if prime_bool is True:
             # 소수이면
             if primes_bool[tc - idx] is True:
-                correct_flag = True
                 print('{} = {} + {}'.format(tc, idx, tc - idx))
-                break
-    if correct_flag is False:
-        print("Goldbach's conjecture is wrong.")
+                return
+    print("Goldbach's conjecture is wrong.")
 
 
 if __name__ == '__main__':
