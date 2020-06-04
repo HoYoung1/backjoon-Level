@@ -9,7 +9,7 @@ min_result = sys.maxsize
 
 def dfs(depth, current_value, add, sub, mul, div):
     global max_result, min_result
-
+1
     if depth == N:
         max_result = max(max_result, current_value)
         min_result = min(min_result, current_value)
