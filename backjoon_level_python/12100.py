@@ -131,19 +131,19 @@ def dfs(depth, before_map, N):
         maximum_value = max(maximum_value, before_map.get_max_value())
         return
 
-    current_map = Map2048(N, deepcopy(before_map.matrix))
+    current_map = Map2048(N, deepcopy(before_map.edges))
     current_map.up()
     dfs(depth + 1, current_map, N)
 
-    current_map = Map2048(N, deepcopy(before_map.matrix))
+    current_map = Map2048(N, deepcopy(before_map.edges))
     current_map.down()
     dfs(depth + 1, current_map, N)
 
-    current_map = Map2048(N, deepcopy(before_map.matrix))
+    current_map = Map2048(N, deepcopy(before_map.edges))
     current_map.left()
     dfs(depth + 1, current_map, N)
 
-    current_map = Map2048(N, deepcopy(before_map.matrix))
+    current_map = Map2048(N, deepcopy(before_map.edges))
     current_map.right()
     dfs(depth + 1, current_map, N)
 

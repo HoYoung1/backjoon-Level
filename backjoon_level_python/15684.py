@@ -51,18 +51,18 @@ def dfs(depth, ghost_leg, N, H, start_i, start_j, visited):
     for i in range(start_i, H):
         for j in range(start_j, N):
             start_j = 0
-            if ghost_leg.matrix[i][j] == 0 and visited[i][j] is False:
-                if j+1 < N and ghost_leg.matrix[i][j+1] == 0:
+            if ghost_leg.edges[i][j] == 0 and visited[i][j] is False:
+                if j+1 < N and ghost_leg.edges[i][j + 1] == 0:
                     # can_put_bridge
-                    ghost_leg.matrix[i][j] = chr(65 + depth) # for debug A B C
-                    ghost_leg.matrix[i][j+1] = chr(65 + depth)  # for debug A B C
+                    ghost_leg.edges[i][j] = chr(65 + depth) # for debug A B C
+                    ghost_leg.edges[i][j + 1] = chr(65 + depth)  # for debug A B C
                     visited[i][j] = True
 
                     dfs(depth + 1, ghost_leg, N, H, i, j, visited)
 
                     visited[i][j] = False
-                    ghost_leg.matrix[i][j] = 0
-                    ghost_leg.matrix[i][j + 1] = 0
+                    ghost_leg.edges[i][j] = 0
+                    ghost_leg.edges[i][j + 1] = 0
 
 
 def solution(N, H, bridges):
