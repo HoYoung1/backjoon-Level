@@ -20,7 +20,6 @@ def solve(num):
     return answer
     
 
-
 if __name__ == '__main__':
     l = [0]
     i = 1
