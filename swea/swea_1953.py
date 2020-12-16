@@ -30,21 +30,33 @@ def get_available_direction(type_s):
     return available_direction
 
 
-def is_connected(b_xy, tunnel_xy, t_map):
-    temp_list = get_available_direction(t_map[b_xy[0]][b_xy[1]])
-    for direction in temp_list:
-        if direction == left:
-            direction = right
-        elif direction == right:
-            direction = left
-        elif direction == up:
-            direction = down
-        elif direction == down:
-            direction = up
-    inter = set(temp_list) & set(get_available_direction(t_map[tunnel_xy[0]][tunnel_xy[1]]))
-    if inter:
+def is_connected(b_xy, direction, t_map):
+    if (direction[0] * -1, direction[1] * -1) in get_available_direction(t_map[b_xy[0]][b_xy[1]]):
         return True
     return False
+    # t_list = get_available_direction(t_map[b_xy[0]][b_xy[1]])
+    # t2_list = get_available_direction(t_map[tunnel_xy[0]][tunnel_xy[1]])
+    # for item in t_list:
+    #     if (item[0] * -1, item[1] * -1) in t2_list:
+    #         return True
+    # return False
+#     temp_list = get_available_direction(t_map[b_xy[0]][b_xy[1]])
+#     print(temp_list)
+#     c_list = []
+#     for direction in temp_list:
+#         if direction == left:
+#             c_list.append(right)
+#         elif direction == right:
+#             c_list.append(left)
+#         elif direction == up:
+#             c_list.append(down)
+#         elif direction == down:
+#             c_list.append(up)
+#     print(temp_list)
+#     inter = set(c_list) & set(get_available_direction(t_map[tunnel_xy[0]][tunnel_xy[1]]))
+#     if inter:
+#         return True
+#    return False
 
 
 def arrest(N, M, R, C, L, t_map, searched, rtn_val):
@@ -62,7 +74,7 @@ def arrest(N, M, R, C, L, t_map, searched, rtn_val):
     """
     timer = 1
     dq = deque([(R, C, timer)])
-    searched.append((R, C))
+    searched[R][C] = 1
     rtn_val += 1
     while dq:
         tunnel_xy = dq.popleft()
@@ -72,12 +84,11 @@ def arrest(N, M, R, C, L, t_map, searched, rtn_val):
             timer = tunnel_xy[2]
             if x < 0 or x >= N or y < 0 or y >= M:
                 continue
-            if (x, y) in searched or t_map[x][y] == 0 or not is_connected((x, y), tunnel_xy, t_map) or timer+1 > L:
+            if searched[x][y] == 1 or t_map[x][y] == 0 or not is_connected((x, y), direction, t_map) or timer+1 > L:
                 continue
-            searched.append((x, y))
+            searched[x][y] = 1
             dq.append((x, y, timer+1))
             rtn_val += 1
-
 
     return rtn_val
 
@@ -87,6 +98,6 @@ if __name__ == '__main__':
         N, M, R, C, L = map(int, input().split())
 
         grid = [list(map(int, input().split())) for _ in range(N)]
-        searched = []
+        searched = [[0]*M for _ in range(N)]
         rtn_val = 0
         print('#{} {}'.format(i + 1, arrest(N, M, R, C, L, grid, searched, rtn_val)))
