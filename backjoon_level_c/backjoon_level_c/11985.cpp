@@ -12,7 +12,7 @@ int main() {
 
 	int N, M, K;
 
-	cin >> N >> M >> M;
+	cin >> N >> M >> K;
 
 	vector<int> oranges;
 	for (int i = 0; i < N; i++) {
@@ -40,15 +40,20 @@ int main() {
 				max_value = max(max_value, oranges[k]);
 				min_value = min(min_value, oranges[k]);
 			}
-			cout << "max_value" << max_value << endl;
-			cout << "min_value" << min_value << endl;
+			// cout << "max_value : " << max_value << endl;
+			// cout << "min_value : " << min_value << endl;
 
+			// cout <<"dp i :" << dp[i] << endl;
+			// cout <<"dp j :" << dp[j] << endl;
+			
+			int value = (max_value - min_value) * (i-j) + K;
+			// cout << "valiue : " << value << endl;;
 			dp[i] = min(dp[i], dp[j] + (max_value - min_value) * (i-j) + K);
 		}
 	}
 
-	for (int i = 0; i < N+1; i++){
-		cout << dp[i];	
-	}
+	// for (int i = 0; i < N+1; i++){
+	// 	cout << dp[i] << endl;	
+	// }
 	cout << dp[N];
 }
