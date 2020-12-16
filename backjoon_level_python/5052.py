@@ -2,11 +2,29 @@ import sys
 input = sys.stdin.readline
 
 
+class TrieNode:
+    def __init__(self):
+        self.nodes = {}
+        self.is_leaf = False
+
+    def insert(self, word):
+        curr = self
+        for char in word:
+            if char not in curr.nodes:
+                curr.nodes[char] = TrieNode()
+            curr = curr.nodes[char]
+
+            if curr.is_leaf is True:
+                return False
+        curr.is_leaf = True
+        return True
+
+
 def solve(phone_numbers):
-    for i in range(len(phone_numbers)):
-        for j in range(i + 1, len(phone_numbers)):
-            if phone_numbers[i] == phone_numbers[j][:len(phone_numbers[i])]:
-                return "NO"
+    root = TrieNode()
+    for number in phone_numbers:
+        if root.insert(number) is False:
+            return "NO"
     return "YES"
 
 
