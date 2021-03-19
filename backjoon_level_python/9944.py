@@ -1,100 +1,83 @@
+# all visit 갯수로
+# 백트래킹 조건 넣은 것
 import sys
-from enum import Enum
-import copy
 
-dx = [0, 0, -1, 1]
-dy = [-1, 1, 0, 0]
+sys.setrecursionlimit(10**7)
+input = sys.stdin.readline
 
 
-class MatrixState(Enum):
-    LAND = 1
-    WALL = 2
-    VISITED = 3
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
 
 
-def all_visited(board_map):
-    for line in board_map:
-        print(line)
-    print()
-    for line in board_map:
-        if MatrixState.LAND in line:
-            return False
-    return True
+def dfs(depth, x, y):
+    global answer, visited_cnt
 
-
-def dfs(location):
-    global move_count
-    global min_move_count
-    global visited
-
-    x, y = location
-
-    if all_visited(board_map):
-        min_move_count = min(min_move_count, move_count)
+    if depth > answer:  # 이 백트래킹 조건이 들어가야 시간 단축이 좋을 듯,
         return
 
-    for i in range(4):
-        count_flag = False
-        if 0 <= x + dx[i] < len(board_map) and 0 <= y + dy[i] < len(board_map[i]) and board_map[x + dx[i]][y + dy[i]] == MatrixState.LAND:
-            while True:
-                if 0 <= x + dx[i] < len(board_map) and 0 <= y + dy[i] < len(board_map[i]) and board_map[x + dx[i]][y + dy[i]] == MatrixState.LAND:
-                    board_map[x][y] = MatrixState.VISITED  # 방문했다고 기록
-                    x = x + dx[i]
-                    y = y + dy[i]
-                    count_flag = True
-                else:
-                    break
-            if count_flag:
-                move_count += 1
-                board_map[x][y] = MatrixState.VISITED
-                visited[x][y] = True
-                dfs((x, y))
-                visited[x][y] = False
-                board_map[x][y] = MatrixState.LAND
-                move_count -= 1
+    if all_visited(visited_cnt):
+        answer = min(answer, depth)
+        return
+
+    for k in range(4):
+        next_x, next_y = x + dx[k], y + dy[k]
+        temp_q = []
+        while 0 <= next_x < N and 0 <= next_y < M and visited[next_x][next_y] is False and matrix[next_x][
+            next_y] == '.':
+            # dash
+            visited_cnt += 1
+            visited[next_x][next_y] = True
+            temp_q.append((next_x, next_y))
+            next_x, next_y = next_x + dx[k], next_y + dy[k]
+        if temp_q:
+            next_x, next_y = next_x - dx[k], next_y - dy[k]
+            dfs(depth + 1, next_x, next_y)
+            # visit 원복
+            for q_x, q_y in temp_q:
+                visited_cnt -= 1
+                visited[q_x][q_y] = False
 
 
-def solution(board_map):
-    # 방문 리스트 초기화
+def all_visited(cnt):
+    return all_cnt == cnt
 
-    for i, line in enumerate(board_map):
-        for j, s in enumerate(line):
-            if s == MatrixState.LAND: # 갈 수 있는경우
-                global_moving_count = 0
-                dfs((i, j))
-    return 0
+
+def solve():
+    global visited_cnt
+
+    for i in range(N):
+        for j in range(M):
+            if matrix[i][j] == '.':
+                visited_cnt = 1
+
+                visited[i][j] = True
+                dfs(0, i, j)
+                visited[i][j] = False
+    return answer if answer != sys.maxsize else -1
+
+
+def get_all_cnt():
+    result = 0
+    for i in range(N):
+        for j in range(M):
+            if matrix[i][j] == '.':
+                result += 1
+    return result
 
 
 if __name__ == '__main__':
-    while True:
-        move_count = 0
-        min_move_count = sys.maxsize
+    try:
+        loop_cnt = 1
+        while True:
+            answer = sys.maxsize
+            N, M = map(int, input().rstrip().split())
+            matrix = [input().rstrip() for _ in range(N)]
 
-        N, M = map(int, input().split())
-        board_map = []
-        case = 0
-        # try:
-        for i in range(N):
-            line = input()
-            temp_list = []
-            for s in line:
-                # 갈 수 있는 '.'은 0
-                # 갈 수 없는 '*'은 1
-                if s == '.':
-                    temp_list.append(MatrixState.LAND)
-                elif s == '*':
-                    temp_list.append(MatrixState.WALL)
-            board_map.append(temp_list)
-
-        visited = []
-        for i in board_map:
-            temp_list = [False] * len(board_map[0])
-            visited.append(temp_list)
-
-        case += 1
-        print("Case {}: {}".format(case, solution(board_map)))
-        # except Exception as e:
-        #     print(e)
-        #     exit()
-
-
+            all_cnt = get_all_cnt()
+            visited_cnt = 0
+            visited = [[False] * M for _ in range(N)]
+            print(f'Case {loop_cnt}: {solve()}')
+            loop_cnt += 1
+    except:
+        exit()
